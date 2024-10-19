@@ -38,6 +38,12 @@ page 50101 Student
                 field(Class; Rec.Class)
                 {
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                    begin
+
+                    end;
                 }
                 field("Class Description"; Rec."Class Description")
                 {

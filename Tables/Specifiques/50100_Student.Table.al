@@ -32,18 +32,19 @@ table 50100 Student
             DataClassification = ToBeClassified;
             Caption = 'Birth Date';
         }
-        field(5; Class; Code[25])
+        field(5; Class; Code[50])
         {
             DataClassification = ToBeClassified;
             Caption = 'Class';
             TableRelation = Class;
+
             trigger OnValidate()
             var
                 Class_L: Record Class;
             begin
 
                 Class_L.Get(Rec.Class);
-                Rec."Class Description" := Class_L.Description;
+                Rec.Validate(Rec."Class Description", Class_L.Description);
             end;
         }
         field(6; "Class Description"; Text[150])
@@ -51,6 +52,12 @@ table 50100 Student
             DataClassification = ToBeClassified;
             Caption = 'Class Description';
             Editable = false;
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+
+            end;
         }
     }
 
