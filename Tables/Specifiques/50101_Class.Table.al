@@ -15,6 +15,19 @@ table 50101 Class
             DataClassification = ToBeClassified;
             Caption = 'Description';
         }
+        field(3; "Student's Number"; Integer)
+        {
+            Caption = 'Student''s Number';
+            FieldClass = FlowField;
+            CalcFormula = count(Student where(Class = field(Code)));
+            Editable = false;
+        }
+        field(4; Teacher; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Teacher';
+            TableRelation = Employee where(Job = const(Teacher));
+        }
     }
 
     keys

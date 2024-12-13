@@ -18,6 +18,16 @@ page 50103 Class
                 {
                     ApplicationArea = All;
                 }
+                field("Student's Number"; Rec."Student's Number")
+                {
+                    ApplicationArea = All;
+                }
+                field(Teacher; Rec.Teacher)
+                {
+                    ApplicationArea = All;
+                }
+
+
             }
         }
     }
@@ -40,3 +50,4 @@ page 50103 Class
     var
         myInt: Integer;
 }
+

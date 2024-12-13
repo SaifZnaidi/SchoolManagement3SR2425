@@ -31,8 +31,12 @@ report 50100 "Student List"
             {
 
             }
+            trigger OnPreDataItem()
 
-
+            begin
+                if ClassCode_G <> '' then
+                    Student.SetRange(Class, ClassCode_G);
+            end;
 
         }
     }
@@ -46,6 +50,12 @@ report 50100 "Student List"
             {
                 group(GroupName)
                 {
+                    field(ClassCode_G; ClassCode_G)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Class';
+                        TableRelation = Class;
+                    }
 
                 }
             }
@@ -61,10 +71,17 @@ report 50100 "Student List"
                 }
             }
         }
+
     }
 
 
-
+    trigger OnPreReport()
     var
         myInt: Integer;
+    begin
+
+    end;
+
+    var
+        ClassCode_G: Code[50];
 }

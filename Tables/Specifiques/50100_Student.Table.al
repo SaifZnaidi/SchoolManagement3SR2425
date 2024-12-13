@@ -42,9 +42,8 @@ table 50100 Student
             var
                 Class_L: Record Class;
             begin
-
-                Class_L.Get(Rec.Class);
-                Rec.Validate(Rec."Class Description", Class_L.Description);
+                if Class_L.Get(Rec.Class) then
+                    Validate(Rec."Class Description", Class_L.Description);
             end;
         }
         field(6; "Class Description"; Text[150])
@@ -58,6 +57,46 @@ table 50100 Student
             begin
 
             end;
+        }
+        field(7; "AVG S1"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'AVG S1';
+            Editable = false;
+        }
+        field(8; "AVG S2"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'AVG S2';
+            Editable = false;
+        }
+        field(9; "Overall Year AVG"; Decimal)
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Overall Year AVG';
+            Editable = false;
+        }
+        field(10; "Over Year Status"; Enum "Over Year Status")
+        {
+            Caption = 'Over Year Status';
+            DataClassification = ToBeClassified;
+            //Editable = false;
+
+        }
+        field(11; "Number Of Student Succeeded"; Integer)
+        {
+            //DataClassification = ToBeClassified;
+            Caption = 'Number Of Student Succeeded';
+            FieldClass = FlowField;
+            CalcFormula = count(Student where("Over Year Status" = filter(Succeed)));
+        }
+
+        field(12; "Number Of not Student Succeeded"; Integer)
+        {
+            //DataClassification = ToBeClassified;
+            Caption = 'Number Of Student Succeeded';
+            FieldClass = FlowField;
+            CalcFormula = count(Student where("Over Year Status" = filter("Not Succeed")));
         }
     }
 

@@ -29,26 +29,44 @@ page 50101 Student
                     ApplicationArea = All;
                 }
 
-
-
             }
             group(ClassInfo)
             {
                 Caption = 'Class';
                 field(Class; Rec.Class)
                 {
-                    ApplicationArea = All;
-                    trigger OnValidate()
-                    var
-                        myInt: Integer;
-                    begin
-
-                    end;
                 }
                 field("Class Description"; Rec."Class Description")
                 {
                     ApplicationArea = All;
                 }
+            }
+            group(Averages)
+            {
+                Caption = 'Averages';
+                field("AVG S1"; Rec."AVG S1")
+                {
+                    ApplicationArea = All;
+                }
+                field("AVG S2"; Rec."AVG S2")
+                {
+                    ApplicationArea = All;
+                }
+                field("Overall Year AVG"; Rec."Overall Year AVG")
+                {
+                    ApplicationArea = All;
+                }
+                field("Over Year Status"; Rec."Over Year Status")
+                {
+                    ApplicationArea = All;
+                }
+
+            }
+            part(Note; "Note ListPart")
+            {
+                ApplicationArea = All;
+                SubPageLink = CIN = FIELD(CIN);
+                UpdatePropagation = Both;
             }
         }
     }
@@ -57,17 +75,8 @@ page 50101 Student
     {
         area(Processing)
         {
-            action(ActionName)
-            {
 
-                trigger OnAction()
-                begin
 
-                end;
-            }
         }
     }
-
-    var
-        myInt: Integer;
 }
